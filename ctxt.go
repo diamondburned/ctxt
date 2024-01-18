@@ -19,3 +19,9 @@ func From[T any](ctx context.Context) T {
 	v, _ := ctx.Value(key[T]{}).(T)
 	return v
 }
+
+// Has returns true if the context contains a value of the given type.
+func Has[T any](ctx context.Context) bool {
+	_, ok := ctx.Value(key[T]{}).(T)
+	return ok
+}
