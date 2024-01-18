@@ -15,13 +15,7 @@ func With[T any](ctx context.Context, v T) context.Context {
 }
 
 // From returns the value associated with the wanted type.
-func From[T any](ctx context.Context) T {
-	v, _ := ctx.Value(key[T]{}).(T)
-	return v
-}
-
-// Has returns true if the context contains a value of the given type.
-func Has[T any](ctx context.Context) bool {
-	_, ok := ctx.Value(key[T]{}).(T)
-	return ok
+func From[T any](ctx context.Context) (T, bool) {
+	v, ok := ctx.Value(key[T]{}).(T)
+	return v, ok
 }
